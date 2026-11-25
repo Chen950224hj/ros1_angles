@@ -1,0 +1,17 @@
+name: ROS1 CI
+
+on:
+  push:
+    branches: [ "noetic-devel" ]
+  pull_request:
+    branches: [ "noetic-devel" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ros-industrial/industrial_ci@master
+        env:
+          ROS_DISTRO: noetic
+          TARGET_BRANCH: noetic-devel
